@@ -6,6 +6,12 @@ export class RegisterDto {
   email: string;
 
   @Field()
+  username: string;
+
+  @Field()
+  avatarColor: string;
+
+  @Field()
   password: string;
 
   @Field()

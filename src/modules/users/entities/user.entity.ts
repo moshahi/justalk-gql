@@ -5,6 +5,12 @@ export class User {
   @Field(() => Int)
   id: number;
 
+  @Field(() => String)
+  username: string;
+
+  @Field(() => String)
+  avatarColor: string;
+
   @Field({ nullable: true })
   firstName: string;
 

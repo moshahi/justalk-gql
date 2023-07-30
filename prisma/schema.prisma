@@ -11,10 +11,12 @@ datasource db {
 }
 
 model User {
-  id        Int     @id @default(autoincrement())
-  firstName String?
-  lastName  String?
-  email     String  @unique
-  password  String
-  refToken  String?
+  id          Int     @id @default(autoincrement())
+  firstName   String?
+  lastName    String?
+  email       String  @unique
+  username    String  @unique
+  password    String
+  avatarColor String
+  refToken    String?
 }
