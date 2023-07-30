@@ -15,6 +15,11 @@ export class UsersResolver {
     return this.usersService.findMe(req);
   }
 
+  @Query(() => User)
+  findByUsername(@Args('username') username: string) {
+    return this.usersService.findByUsername(username);
+  }
+
   @Query(() => User, { name: 'email' })
   findOneByEmail(@Args('email') email: string) {
     return this.usersService.findOneByEmail(email);

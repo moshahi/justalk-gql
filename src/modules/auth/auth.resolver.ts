@@ -6,7 +6,7 @@ import { LoginDto } from './dto/login.dto';
 import { Request } from 'express';
 import { UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from './guard/gql-auth.guard';
-import { GetCurrentUser } from 'src/common/get-current-user-id.decorator';
+import { GetCurrentUser } from 'src/common/get-current-user.decorator';
 
 @Resolver()
 export class AuthResolver {

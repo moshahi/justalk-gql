@@ -25,7 +25,6 @@ export class AuthService {
 
   async login(body: LoginDto, req: Request) {
     try {
-      // const user = await this.validateUser(body.email, body.password);
       const user = await this.userService.findOne(body.email);
       if (!user) {
         return new BadRequestException('کاربری با این ایمیل موجود نمیباشد');
@@ -64,6 +63,8 @@ export class AuthService {
         data: {
           email: body.email,
           password: hashPassword,
+          avatarColor: body.avatarColor,
+          username: body.username,
         },
       });
       const loginBody = {
@@ -117,12 +118,16 @@ export class AuthService {
           refresh_token,
         };
       }
+      const refresh_token = await this.jwtService.sign(payload, {
+        expiresIn: '1d',
+        secret: process.env.REF_TOKEN_SECRET,
+      });
       const access_token = await this.jwtService.sign(payload, {
         secret: process.env.ACC_TOKEN_SECRET,
         expiresIn: '1d',
       });
       return {
-        refresh_token: null,
+        refresh_token,
         access_token,
       };
     } catch (error) {

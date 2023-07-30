@@ -4,6 +4,8 @@
 
 type User {
   id: Int!
+  username: String!
+  avatarColor: String!
   firstName: String
   lastName: String
   email: String!
@@ -16,6 +18,7 @@ type Auth {
 
 type Query {
   findMe: User!
+  findByUsername(username: String!): User!
   email(email: String!): User!
   refreshToken: Auth!
 }
@@ -27,6 +30,8 @@ type Mutation {
 
 input RegisterDto {
   email: String!
+  username: String!
+  avatarColor: String!
   password: String!
   rememberMe: Boolean!
 }
