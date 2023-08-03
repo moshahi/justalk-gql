@@ -25,7 +25,7 @@ export class AuthService {
 
   async login(body: LoginDto, req: Request) {
     try {
-      const user = await this.userService.findOne(body.email);
+      const user = await this.userService.findOne(body.username);
       if (!user) {
         return new BadRequestException('کاربری با این ایمیل موجود نمیباشد');
       }
@@ -68,7 +68,7 @@ export class AuthService {
         },
       });
       const loginBody = {
-        email: user.email,
+        username: user.username,
         password: body.password,
         rememberMe: body.rememberMe,
       };
