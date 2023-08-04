@@ -37,7 +37,7 @@ input RegisterDto {
 }
 
 input LoginDto {
-  email: String!
+  username: String!
   password: String!
   rememberMe: Boolean!
 }
